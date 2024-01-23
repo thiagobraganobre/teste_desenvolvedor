@@ -3,6 +3,7 @@ FROM node:18.17
 # Atualize os pacotes e instale as dependências necessárias
 RUN apt-get update && apt-get install -y postgresql-client && rm -rf /var/lib/apt/lists/*
 
+
 EXPOSE 5432
 
 # Configure o ambiente Node.js

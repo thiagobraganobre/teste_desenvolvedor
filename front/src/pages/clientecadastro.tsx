@@ -7,6 +7,8 @@ const ClientesCadastro = () => {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [telefone, setTelefone] = useState('');
+  const [coordenada_x, setCoordenadaX] = useState('');
+  const [coordenada_y, setCoordenadaY] = useState('');
 
   const MAX_CARACTERES_NOME = 100;
   const MAX_CARACTERES_EMAIL = 100;
@@ -38,6 +40,25 @@ const ClientesCadastro = () => {
     return regexEmail.test(email);
   };
 
+  const handleCoordenadaXChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    const regex = /^-?\d{0,2}(\.\d{0,6})?$/;
+    if (!regex.test(value)) {
+      return;
+    }
+    setCoordenadaX(value);
+  };
+  
+  const handleCoordenadaYChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    const regex = /^-?\d{0,2}(\.\d{0,6})?$/;
+    if (!regex.test(value)) {
+      return;
+    }
+    setCoordenadaY(value);
+  };
+  
+    
   const handleSubmit = async () => {
     // Validar email antes de enviar
     if (!validarEmail(email)) {
@@ -51,7 +72,7 @@ const ClientesCadastro = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ nome, email, telefone }),
+        body: JSON.stringify({ nome, email, telefone, coordenada_x, coordenada_y }),
       });
 
       if (response.ok) {
@@ -115,6 +136,34 @@ const ClientesCadastro = () => {
               onChange={handleTelefoneChange}
             />
           </div>
+
+          <div className="mb-3">
+              <label htmlFor="coordenada_x" className="form-label">
+                Coordenada X:
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="coordenada_x"
+                value={coordenada_x}
+                onChange={handleCoordenadaXChange}
+              />
+            </div>
+
+            <div className="mb-3">
+              <label htmlFor="coordenada_y" className="form-label">
+                Coordenada Y:
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="coordenada_y"
+                value={coordenada_y}
+                onChange={handleCoordenadaYChange}
+              />
+            </div>
+
+
 
           <button
             type="button"

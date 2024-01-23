@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Menu from '../components/Menu';
-import ReactPaginate from 'react-paginate';
 import { Table, Pagination } from 'react-bootstrap';
 
 interface Cliente {
@@ -8,6 +7,8 @@ interface Cliente {
   nome: string;
   email: string;
   telefone: string;
+  coordenada_x:number;
+  coordenada_y:number;
 }
 
 const ClientesPage = () => {
@@ -45,6 +46,8 @@ const ClientesPage = () => {
         <td>{cliente.nome}</td>
         <td>{cliente.email}</td>
         <td>{cliente.telefone}</td>
+        <td>{cliente.coordenada_x}</td>
+        <td>{cliente.coordenada_y}</td>
       </tr>
     ));
   };
@@ -63,6 +66,8 @@ const ClientesPage = () => {
               <th>Nome</th>
               <th>Email</th>
               <th>Telefone</th>
+              <th>Latitude</th>
+              <th>Longitude</th>
             </tr>
           </thead>
           <tbody>{renderClientes()}</tbody>

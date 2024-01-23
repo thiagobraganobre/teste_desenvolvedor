@@ -105,15 +105,3 @@ a {
     color-scheme: dark;
   }
 }
-
-
-
-@media print {
-  .hidden-on-print {
-    display: none;
-  }
-}
-
-.print-button {
-  float: right;
-}

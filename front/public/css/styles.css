@@ -12,3 +12,24 @@
     }
   }
   
+ 
+
+.modal-grande {
+  width: 80%; 
+  max-width: 1200px; 
+  margin: 0 auto;
+}
+
+/* Opcional: Para ajustar a altura, adicione a propriedade height conforme necessário */
+.modal-grande .modal-dialog {
+  height: 80vh; /* Defina a altura desejada (80% da altura da viewport) */
+}
+
+/* Opcional: Se desejar centralizar verticalmente a modal */
+.modal-grande .modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+ 

@@ -15,6 +15,11 @@ const Menu = () => {
             Novo Cliente
           </a>
         </li>
+        <li className="nav-item">
+          <a href="/rotas" className="nav-link" target="_self" rel="noopener noreferrer">
+            Rota
+          </a>
+        </li>
       </ul>
     </nav>
   );

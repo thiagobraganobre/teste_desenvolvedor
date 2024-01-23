@@ -4,22 +4,22 @@
     "description": "Teste de Programação Desenvolvedor Facilita Jurídico",
     "main": "index.js",
     "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/thiagobraganobre/facilita_juridico.git"
+        "type": "git",
+        "url": "git+https://github.com/thiagobraganobre/facilita_juridico.git"
     },
     "author": "Thiago Braga Nobre",
     "license": "MIT",
     "bugs": {
-      "url": "https://github.com/thiagobraganobre/facilita_juridico/issues"
+        "url": "https://github.com/thiagobraganobre/facilita_juridico/issues"
     },
     "homepage": "https://github.com/thiagobraganobre/facilita_juridico#readme",
     "dependencies": {
-      "cors": "^2.8.5",
-      "express": "^4.18.2",
-      "pg": "^8.11.3"
+        "cors": "^2.8.5",
+        "dotenv": "^16.3.2",
+        "express": "^4.18.2",
+        "pg": "^8.11.3"
     }
-  }
-  
+}
