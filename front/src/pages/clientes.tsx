@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Menu from '../components/Menu';
-import { Table, Pagination } from 'react-bootstrap';
+import { Table, Pagination, Form } from 'react-bootstrap';
 
 interface Cliente {
   id: number;
@@ -14,6 +14,7 @@ interface Cliente {
 const ClientesPage = () => {
   const [clientes, setClientes] = useState<Cliente[]>([]);
   const [currentPage, setCurrentPage] = useState(0);
+  const [searchTerm, setSearchTerm] = useState('');
   const itemsPerPage = 10;
 
   useEffect(() => {
@@ -30,14 +31,20 @@ const ClientesPage = () => {
     fetchData();
   }, []);
 
-  const pageCount = Math.ceil(clientes.length / itemsPerPage);
+  const filteredClientes = clientes.filter((cliente) =>
+    cliente.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    cliente.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    cliente.telefone.includes(searchTerm)
+  );
+
+  const pageCount = Math.ceil(filteredClientes.length / itemsPerPage);
 
   const handlePageClick = (selectedPage: { selected: number }) => {
     setCurrentPage(selectedPage.selected);
   };
 
   const offset = currentPage * itemsPerPage;
-  const currentClientes = clientes.slice(offset, offset + itemsPerPage);
+  const currentClientes = filteredClientes.slice(offset, offset + itemsPerPage);
 
   const renderClientes = () => {
     return currentClientes.map((cliente) => (
@@ -58,6 +65,15 @@ const ClientesPage = () => {
 
       <div className="container mt-5">
         <h3 className="mb-4">Lista de Clientes</h3>
+
+        <Form.Group controlId="formSearch">
+          <Form.Control
+            type="text"
+            placeholder="Pesquisar por nome, email ou telefone"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </Form.Group>
 
         <Table striped bordered hover>
           <thead>
